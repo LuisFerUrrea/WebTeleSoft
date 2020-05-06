@@ -35,4 +35,8 @@ export class ClientesComponent implements OnInit {
       });
   }
 
+  borrarCliente(cliente: ClienteModel) {
+    this.clienteService.delete(cliente);
+  }
+
 }

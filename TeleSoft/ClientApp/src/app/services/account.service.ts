@@ -8,7 +8,7 @@ import { UsuarioModel } from '../models/usuario.model';
 })
 export class AccountService {
 
-  private apiURL = "https://localhost:44388/" + "api/account";
+  private apiURL = "https://localhost:44399/" + "account";
 
   userToken: string = "";
 

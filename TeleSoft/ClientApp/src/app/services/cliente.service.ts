@@ -13,7 +13,7 @@ const httpOptions = {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'  
 })
 export class ClienteService {
 
@@ -24,23 +24,27 @@ export class ClienteService {
   }
 
   public GetClientes(): Observable<ClienteModel[]> {
-    return this.http.get<ClienteModel[]>(this.baseUrl + "api/Cliente/ListCliente");
+    console.log('entro getall');
+    return this.http.get<ClienteModel[]>(this.baseUrl + "Cliente/GetAll");
   }
 
   public GetCliente(id): Observable<ClienteModel> {
-    return this.http.get<ClienteModel>(this.baseUrl + "api/Cliente/GetCliente?id=" + id);
+    return this.http.get<ClienteModel>(this.baseUrl + "Cliente/Get?id=" + id);
   }
 
-  public Add(cliente: ClienteModel): Observable<MyResponseModel> {
-    return this.http.post<MyResponseModel>(this.baseUrl + "api/Cliente/Add", { 'nombre': cliente.nombre, 'correo': cliente.correo, 'tipoAlmacenamiento': cliente.tipoAlmacenamiento }, httpOptions);
+  public Add(cliente: ClienteModel): Observable<ClienteModel> {
+    console.log(this.baseUrl + "Cliente/AddCliente");
+    return this.http.post<ClienteModel>(this.baseUrl + "Cliente/AddCliente", { 'nombre': cliente.nombre, 'correo': cliente.correo, 'tipoAlmacenamiento': cliente.tipoAlmacenamiento }, httpOptions);
     //subscribe(result => {
     // return result;
     //},
     //  error => console.error(error)
     //);
   }
-  public Update(cliente: ClienteModel): Observable<MyResponseModel> {
-    return this.http.post<MyResponseModel>(this.baseUrl + "api/Cliente/Edit", { 'id': cliente.id, 'nombre': cliente.nombre, 'correo': cliente.correo, 'tipoAlmacenamiento': cliente.tipoAlmacenamiento }, httpOptions);
+
+  public Update(cliente: ClienteModel): Observable<ClienteModel> {
+    console.log(cliente);
+    return this.http.put<ClienteModel>(this.baseUrl + "Cliente/UpdateCliente", { 'id': cliente.id, 'nombre': cliente.nombre, 'correo': cliente.correo, 'tipoAlmacenamiento': cliente.tipoAlmacenamiento }, httpOptions);
     //subscribe(result => {
     // return result;
     //},
@@ -49,7 +53,8 @@ export class ClienteService {
   }
 
   public delete(cliente: ClienteModel) {
-    return this.http.post<MyResponseModel>(this.baseUrl + "api/Cliente/Delete", { 'id': cliente.id }, httpOptions).
+    console.log("delete cliente"+ cliente.id.toString());
+    return this.http.delete<ClienteModel>(this.baseUrl + "Cliente/DeleteCliente?id=" + cliente.id).
       subscribe(result => {
         console.log(result);
       },

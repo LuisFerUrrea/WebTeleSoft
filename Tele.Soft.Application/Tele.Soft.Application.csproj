@@ -4,4 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tele.Soft.Application.Contracts\Tele.Soft.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Tele.Soft.Business\Tele.Soft.Business.csproj" />
+    <ProjectReference Include="..\Tele.Soft.DataAccess.Contracts\Tele.Soft.DataAccess.Contracts.csproj" />
+    <ProjectReference Include="..\Tele.Soft.DataAccess\Tele.Soft.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
