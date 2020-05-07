@@ -56,8 +56,7 @@ export class AccountService {
     //localStorage.setItem('tokenExpiration', token.expiration);
   }
 
-  estaLogueado(): boolean {
-    console.log('esta logueado');
+  estaLogueado(): boolean {  
     this.visibleNavBar();
     if (localStorage.getItem('token')) {
       if (localStorage.getItem('token').length < 2) {
@@ -66,8 +65,7 @@ export class AccountService {
       else {
         const expira = Number(localStorage.getItem('tokenExpiration'));
         const expiraDate = new Date();
-        expiraDate.setTime(expira);
-        console.log(expiraDate);
+        expiraDate.setTime(expira);       
         if (expiraDate > new Date()) {
           return true;
         }

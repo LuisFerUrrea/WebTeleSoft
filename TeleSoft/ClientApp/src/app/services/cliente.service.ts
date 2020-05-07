@@ -23,8 +23,7 @@ export class ClienteService {
     this.baseUrl = baseUrl;
   }
 
-  public GetClientes(): Observable<ClienteModel[]> {
-    console.log('entro getall');
+  public GetClientes(): Observable<ClienteModel[]> { 
     return this.http.get<ClienteModel[]>(this.baseUrl + "Cliente/GetAll");
   }
 
@@ -32,9 +31,9 @@ export class ClienteService {
     return this.http.get<ClienteModel>(this.baseUrl + "Cliente/Get?id=" + id);
   }
 
-  public Add(cliente: ClienteModel): Observable<ClienteModel> {
-    console.log(this.baseUrl + "Cliente/AddCliente");
-    return this.http.post<ClienteModel>(this.baseUrl + "Cliente/AddCliente", { 'nombre': cliente.nombre, 'correo': cliente.correo, 'tipoAlmacenamiento': cliente.tipoAlmacenamiento }, httpOptions);
+  public Add(cliente: ClienteModel): Observable<ClienteModel> {   
+    //return this.http.post<ClienteModel>(this.baseUrl + "Cliente/AddCliente", { 'nombre': cliente.nombre, 'correo': cliente.correo, 'tipoAlmacenamiento': cliente.tipoAlmacenamiento }, httpOptions);
+    return this.http.post<ClienteModel>(this.baseUrl + "Cliente/AddCliente", cliente, httpOptions);
     //subscribe(result => {
     // return result;
     //},
@@ -42,9 +41,9 @@ export class ClienteService {
     //);
   }
 
-  public Update(cliente: ClienteModel): Observable<ClienteModel> {
-    console.log(cliente);
-    return this.http.put<ClienteModel>(this.baseUrl + "Cliente/UpdateCliente", { 'id': cliente.id, 'nombre': cliente.nombre, 'correo': cliente.correo, 'tipoAlmacenamiento': cliente.tipoAlmacenamiento }, httpOptions);
+  public Update(cliente: ClienteModel): Observable<ClienteModel> {   
+    //return this.http.put<ClienteModel>(this.baseUrl + "Cliente/UpdateCliente", { 'id': cliente.id, 'nombre': cliente.nombre, 'correo': cliente.correo, 'tipoAlmacenamiento': cliente.tipoAlmacenamiento }, httpOptions);
+    return this.http.put<ClienteModel>(this.baseUrl + "Cliente/UpdateCliente", cliente , httpOptions);
     //subscribe(result => {
     // return result;
     //},

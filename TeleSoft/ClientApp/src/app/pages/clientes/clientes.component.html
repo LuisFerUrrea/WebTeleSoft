@@ -29,11 +29,11 @@
     </ng-container>
     <ng-container matColumnDef="acciones">
       <mat-header-cell *matHeaderCellDef> Editar / Eliminar </mat-header-cell>
-      <mat-cell *matCellDef="let element;  let j = index;">
+      <mat-cell *matCellDef="let element;  let i = index;">
         <button mat-raised-button class="btn btn-primary" focusable="false" [routerLink]="['/cliente', element.id ]">
           <i class="fa fa-pencil"></i>          
         </button>
-        <button mat-raised-button color="warn" focusable="false" (click)="borrarCliente(element.id)">
+        <button mat-raised-button color="warn" focusable="false" (click)="borrarCliente(element,i)">
           <i class="fa fa-trash"></i>
         </button>
       </mat-cell>
